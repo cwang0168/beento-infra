@@ -23,6 +23,15 @@ reachable over SSH by multiple people via a shared `ec2-user` account.
    fill in real SSH public keys.
 4. `terraform init && terraform plan && terraform apply`
 
+## Security posture
+
+SSH (port 22) and every port listed in `app_ports` are opened to `0.0.0.0/0`
+by design for this initial setup — there is no bastion host, VPN, or CIDR
+allowlist in front of the instance. Access control relies entirely on which
+SSH public keys are listed in `ssh_public_keys`; password authentication is
+not configured. A CIDR allowlist or moving to SSM Session Manager are
+natural follow-ups if/when tighter access control is needed.
+
 ## Out of scope (for now)
 
 Multiple environments, a database, a domain/TLS/load balancer, autoscaling,

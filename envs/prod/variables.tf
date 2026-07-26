@@ -10,6 +10,12 @@ variable "instance_type" {
   default     = "t3.micro"
 }
 
+variable "ami_id" {
+  description = "Optional AMI ID override; defaults to latest non-minimal Amazon Linux 2023 if null"
+  type        = string
+  default     = null
+}
+
 variable "ssh_public_keys" {
   description = "List of SSH public keys authorized to log in as ec2-user"
   type        = list(string)

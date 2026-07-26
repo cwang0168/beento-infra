@@ -27,6 +27,7 @@ module "ec2_app" {
 
   name            = "beento-prod"
   instance_type   = var.instance_type
+  ami_id          = var.ami_id
   ssh_public_keys = var.ssh_public_keys
   app_ports       = var.app_ports
 }

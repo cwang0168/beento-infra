@@ -11,8 +11,9 @@ own creation state).
     terraform init
     terraform apply -var="state_bucket_name=<your-globally-unique-bucket-name>"
 
-Copy the `state_bucket_name` and `lock_table_name` outputs into the
-`backend "s3"` block in `envs/prod/main.tf`, then run `terraform init` there.
+Uncomment and copy the `state_bucket_name` and `lock_table_name` outputs into
+the `backend "s3"` block in `envs/prod/main.tf`, then run `terraform init`
+there.
 
 This only needs to be run once per AWS account. Keep `bootstrap/terraform.tfstate`
 safe (it is local state, not backed up anywhere by this setup).
