@@ -1,0 +1,6 @@
+ssh_public_keys = [
+  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI... user1@example.com",
+  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI... user2@example.com",
+]
+
+app_ports = [8080]
