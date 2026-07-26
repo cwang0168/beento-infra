@@ -19,8 +19,10 @@ created.
 SSH in as: `ssh ec2-user@$(terraform output -raw public_ip)`
 
 Anyone whose public key is listed in `ssh_public_keys` can log in this way.
-Deploying containers (`docker run` / `docker compose`) on the box is a manual
-step, not automated by this Terraform setup.
+Deploying containers on the box is not automated by this Terraform setup.
+For the `beento` backend specifically, see that repo's `DEPLOY_EC2.md` for
+first-time setup and redeploys; it currently expects the app on port 3000,
+mapped to this instance's `app_ports` entry `8080`.
 
 Changing `ssh_public_keys` (or any other input that affects the cloud-init
 user-data) replaces the instance rather than updating it in place —
