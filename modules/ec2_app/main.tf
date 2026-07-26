@@ -33,10 +33,28 @@ data "aws_vpc" "default" {
   default = true
 }
 
+# Not every AZ in a region supports every instance type (e.g. us-east-1e
+# historically lacks t3 support) — restrict candidate subnets to AZs that
+# actually offer var.instance_type, so subnet selection can't land somewhere
+# the instance type will be rejected.
+data "aws_ec2_instance_type_offerings" "available" {
+  filter {
+    name   = "instance-type"
+    values = [var.instance_type]
+  }
+
+  location_type = "availability-zone"
+}
+
 data "aws_subnets" "default" {
   filter {
     name   = "vpc-id"
     values = [data.aws_vpc.default.id]
+  }
+
+  filter {
+    name   = "availability-zone"
+    values = data.aws_ec2_instance_type_offerings.available.locations
   }
 }
 
