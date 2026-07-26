@@ -2,14 +2,17 @@
 
 ## First-time setup
 
-1. Run `bootstrap/` once (see `bootstrap/README.md`) and note its outputs.
-2. Uncomment and fill in the `backend "s3"` block in `main.tf` with those outputs.
-3. Copy `terraform.tfvars.example` to `terraform.tfvars` and fill in real SSH
+1. Copy `terraform.tfvars.example` to `terraform.tfvars` and fill in real SSH
    public keys (and any `app_ports` your service needs). `terraform.tfvars`
    is gitignored — never commit real keys through it.
-4. `terraform init`
-5. `terraform plan` (requires valid AWS credentials)
-6. `terraform apply`
+2. `terraform init`
+3. `terraform plan` (requires valid AWS credentials)
+4. `terraform apply`
+
+State is stored locally in `terraform.tfstate` (gitignored, not backed up
+anywhere by this setup) — there's no bootstrap step and no remote backend.
+Keep that file safe; losing it means Terraform loses track of what it
+created.
 
 ## After apply
 

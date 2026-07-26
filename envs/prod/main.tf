@@ -8,14 +8,9 @@ terraform {
     }
   }
 
-  # Fill these in after running `bootstrap/` once, then run `terraform init`.
-  # backend "s3" {
-  #   bucket         = "<state_bucket_name from bootstrap output>"
-  #   key            = "prod/terraform.tfstate"
-  #   region         = "us-east-1"
-  #   dynamodb_table = "<lock_table_name from bootstrap output>"
-  #   encrypt        = true
-  # }
+  # No backend block: state is stored locally in terraform.tfstate
+  # (gitignored). Migrate to a remote backend later if this ever needs
+  # multiple contributors or CI access.
 }
 
 provider "aws" {
