@@ -18,7 +18,7 @@ reachable over SSH by multiple people via a shared `ec2-user` account.
 ## Quick start
 
 1. `cd bootstrap && terraform init && terraform apply -var="state_bucket_name=<unique-name>"`
-2. Copy the outputs into `envs/prod/main.tf`'s `backend "s3"` block.
+2. Uncomment and fill in the outputs into `envs/prod/main.tf`'s `backend "s3"` block.
 3. `cd envs/prod`, copy `terraform.tfvars.example` to `terraform.tfvars`,
    fill in real SSH public keys.
 4. `terraform init && terraform plan && terraform apply`

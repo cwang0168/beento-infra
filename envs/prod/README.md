@@ -20,9 +20,9 @@ Deploying containers (`docker run` / `docker compose`) on the box is a manual
 step, not automated by this Terraform setup.
 
 Changing `ssh_public_keys` (or any other input that affects the cloud-init
-user-data, e.g. `ami_id`) replaces the instance rather than updating it in
-place — cloud-init only runs its user-data script once per instance, so an
-in-place update would silently fail to install the new keys. The Elastic IP
-and public address stay the same across a replacement, but anything on the
-old box that isn't in Terraform state (files written to disk, running
+user-data) replaces the instance rather than updating it in place —
+cloud-init only runs its user-data script once per instance, so an in-place
+update would silently fail to install the new keys. The Elastic IP and
+public address stay the same across a replacement, but anything on the old
+box that isn't in Terraform state (files written to disk, running
 containers) does not survive.
